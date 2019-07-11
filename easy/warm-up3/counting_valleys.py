@@ -13,10 +13,23 @@ Valley is anything below sea level before
 going back up?
 """
 
-# 4:40
-
-
+# modify to only check when we come back up to sea level
+# this problem is just poorly written and hard to understand
+# what a valley actually is.
 def countingValleys(n, s):
+    curr_alt = 0  # Sea Level
+    valleys = 0
+    for step in s:
+        if step == 'U':
+            curr_alt += 1
+            if curr_alt == 0:
+                valleys += 1
+        elif step == 'D':
+            curr_alt -= 1
+    return valleys
+
+
+def FAILURE_countingValleys(n, s):
     curr_alt = 0  # Sea Level
     max_high = 0
     travel_down = False
@@ -56,5 +69,5 @@ if __name__ == "__main__":
     s2 = ['D', 'D', 'U', 'U', 'U', 'D', 'D', 'D', 'D', 'U', 'U', 'U']
     # Solution: 2
 
-    sol = countingValleys(n0, s0)
+    sol = countingValleys(n2, s2)
     print("Num of valleys: {}".format(sol))
